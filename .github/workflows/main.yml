@@ -44,4 +44,4 @@ jobs:
     # Deploy functions to Cloud Functions
     - name: Deploy
       run: |-
-        gcloud run deploy "myfunction" --region="us-central1" --source "./" --trigger-http --runtime "nodejs10" --allow-unauthenticated
+        gcloud run deploy "myfunction" --region="us-central1" --trigger-http --runtime "nodejs10" --allow-unauthenticated
