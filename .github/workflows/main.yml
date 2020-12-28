@@ -31,7 +31,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - uses: actions/checkout@v2
-      - uses: google-github-actions/setup-gcloud@master # Set up ADC for credentials
+      - uses: ganesh0405/nodejs-hello@master # Set up ADC for credentials
         with:
           project_id: ${{ secrets.PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
