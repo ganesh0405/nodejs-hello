@@ -36,6 +36,8 @@ jobs:
 
     # Setup gcloud CLI
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@4d8f7a1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       with:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         service_account_email: gcpnyresidents@striking-center-273318.iam.gserviceaccount.com
