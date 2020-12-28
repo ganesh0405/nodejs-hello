@@ -42,7 +42,7 @@ jobs:
         PYTHONIOENCODING: 'UTF-8'
       with:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
-        service_account_email: gcpnyresidents@striking-center-273318.iam.gserviceaccount.com
+        service_account_email: ${{ secrets.EMAIL }}
 
     # Deploy functions to Cloud Functions
     - name: Deploy
