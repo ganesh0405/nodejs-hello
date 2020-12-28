@@ -44,7 +44,7 @@ jobs:
     # Deploy functions to Cloud Functions
     - name: Deploy
       run: |-
-        gcloud functions deploy myfunction \
+        gcloud functions deploy --project myfunction myfunction \
                   --region us-central1 \
                   --source ./ \
                   --trigger-http \
