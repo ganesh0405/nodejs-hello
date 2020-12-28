@@ -35,4 +35,11 @@ jobs:
         with:
           project_id: ${{ secrets.PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: true
+          export_default_credentials: false
+      - id: deploy
+        uses: ./
+        with:
+          name: nyresidents
+          runtime: nodejs10
+          entry_point: screening
+          source_dir: ./
