@@ -33,13 +33,17 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ganesh0405/nodejs-hello@master # Set up ADC for credentials
         with:
-          project_id: ${{ secrets.PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
-          export_default_credentials: false
-      - id: deploy
-        uses: ./
-        with:
-          name: nyresidents
-          runtime: nodejs10
+          name: my-function
           entry_point: screening
-          source_dir: ./
+          runtime: nodejs10
+          credentials: ${{ secrets.GCP_SA_KEY }}
+#           project_id: ${{ secrets.PROJECT_ID }}
+#           service_account_key: ${{ secrets.GCP_SA_KEY }}
+#           export_default_credentials: false
+#       - id: deploy
+#         uses: ./
+#         with:
+#           name: nyresidents
+#           runtime: nodejs10
+#           entry_point: screening
+#           source_dir: ./
