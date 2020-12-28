@@ -41,7 +41,7 @@ jobs:
         CLOUDSDK_PYTHON_SITEPACKAGES: '1'
         PYTHONIOENCODING: 'UTF-8'
       with:
-        service_account_key: ${{ secrets.PRIVATE_KEY }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
         service_account_email: ${{ secrets.EMAIL }}
 
     # Deploy functions to Cloud Functions
