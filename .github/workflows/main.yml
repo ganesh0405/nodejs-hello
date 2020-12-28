@@ -38,6 +38,7 @@ jobs:
     - uses: GoogleCloudPlatform/github-actions/setup-gcloud@4d8f7a1
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+        CLOUDSDK_PYTHON_SITEPACKAGES: '1'
       with:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         service_account_email: gcpnyresidents@striking-center-273318.iam.gserviceaccount.com
@@ -47,7 +48,7 @@ jobs:
       run: |-
         gcloud functions deploy "$SERVICE_NAME" \
           --region "$RUN_REGION" \
-          --source "./oauth-token" \
+          --source "./" \
           --trigger-http \
           --runtime "nodejs10" \
           --allow-unauthenticated
