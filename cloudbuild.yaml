@@ -4,9 +4,9 @@ steps:
   - functions
   - deploy
   - myfunction
-  - --region "us-central1"
+  - --region=us-central1
   - --source=.
   - --trigger-http
-  - --runtime "nodejs10"
+  - --runtime=nodejs10
   - --allow-unauthenticated
-  - --entry-point "screening"
+  - --entry-point=screening
