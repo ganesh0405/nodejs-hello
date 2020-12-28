@@ -32,7 +32,8 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
     - run: node index.js
-    - with:
+    - uses: ganesh0405/nodejs-hello@master
+      with:
         name: my-function
         entry_point: screening
         runtime: nodejs12
