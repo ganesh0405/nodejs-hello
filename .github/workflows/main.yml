@@ -44,4 +44,4 @@ jobs:
     # Deploy functions to Cloud Functions
     - name: Deploy
       run: |-
-        gcloud beta --quiet functions deploy myfunction --region=us-central1 --source ./ --trigger-http --runtime nodejs10 --allow-unauthenticated
+        gcloud beta -q functions deploy myfunction --region=us-central1 --source ./ --trigger-http --runtime nodejs10 --allow-unauthenticated
