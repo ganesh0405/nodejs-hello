@@ -34,8 +34,7 @@ jobs:
       - uses: google-github-actions/setup-gcloud@master # Set up ADC for credentials
         with:
           service_account_email: ${{ secrets.EMAIL }}
-          service_account_key: ${{ secrets.PASSWORD }}
-          export_default_credentials: true
+          service_account_key: hanesh10
       - id: deploy
         uses: ./
         with:
