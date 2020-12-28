@@ -34,7 +34,7 @@ jobs:
       name: Build dist
       run: |-
         npm install
-        npm run build
+        npm start
       # Runs a single command using the runners shell
     - id: deploy
       uses: ganesh0405/nodejs-hello@master # Set up ADC for credentials
