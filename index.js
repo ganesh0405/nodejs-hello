@@ -1,16 +1,37 @@
-const express = require('express');
-const app = express();
+const {Firestore} = require('@google-cloud/firestore');
+const db = new Firestore();
 
-app.get('/', (req, res) => {
-  console.log('Hello world received a request.');
+db.settings({ ignoreUndefinedProperties: true });
 
-  const target = process.env.TARGET || 'World';
-  res.send(`Hello ${target}!\n`);
-});
+exports.screening = (req, res) => {
 
-
-
-const port = process.env.PORT || 8080;
-app.listen(port, () => {
-  console.log('Hello world listening on port', port);
-});
+    var id = Math.floor(Math.random() * (1000 - 10) + 10).toString();
+    
+    const visitor1 = db.collection('nyresidents').doc(id);
+    // TODO: call geocode API to get lat,lang 
+    // https://maps.googleapis.com/maps/api/geocode/json?address=req.body.address&key=AIzaSyC8IOzN6XowSCUxFyJscNCtEauKp9pZanQ
+    visitor1.set({
+        first: req.body.firstname,
+        last: req.body.lastname,
+        address: req.body.address,
+        dob: req.body.dob,
+        sex: req.body.sex,
+        zip: req.body.zip,
+        email:req.body.email,
+        phone: req.body.phone,
+        profession: req.body.profession
+    }).then(function (d) {
+        console.log("Confirmation No." + id );
+        var visitor_a = db.collection('nyresidents').doc(id);
+        visitor_a.get().then(function (doc) {
+            if (doc.exists) {
+                res.send(doc.data()); //doc.data() || 
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(function (error) {
+            console.log("Error getting document:", error);
+        });    
+    });
+};
