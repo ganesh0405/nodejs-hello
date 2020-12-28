@@ -37,9 +37,9 @@ jobs:
     # Setup gcloud CLI
     - uses: google-github-actions/setup-gcloud@master
       with:
-        version: '286.0.0'
+        version: '290.0.1'
         service_account_email: ${{ secrets.EMAIL }}
-        service_account_key: 'ZmMwOTdlZTZiOGEzMDFmNTA2Njc2N2I2NjNmZTljYWI5Mzg0NDY2NA=='
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
         project_id: ${{ secrets.PROJECT_ID }}
     - name: Use gcloud CLI
       run: gcloud info
