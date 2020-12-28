@@ -39,6 +39,7 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         CLOUDSDK_PYTHON_SITEPACKAGES: '1'
+        PYTHONIOENCODING: 'UTF-8'
       with:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         service_account_email: gcpnyresidents@striking-center-273318.iam.gserviceaccount.com
