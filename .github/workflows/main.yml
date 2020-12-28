@@ -45,7 +45,7 @@ jobs:
     - name: Deploy
       run: |-
         gcloud config set project striking-center-273318
-        gcloud functions deploy myfunction \
+        gcloud functions deploy --project striking-center-273318 myfunction \
                   --region us-central1 \
                   --source ./ \
                   --trigger-http \
