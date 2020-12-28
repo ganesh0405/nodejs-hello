@@ -33,22 +33,31 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    # Setup gcloud CLI
-    - uses: google-github-actions/deploy-cloud-functions@main
-      env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-        CLOUDSDK_PYTHON_SITEPACKAGES: '1'
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
       with:
-        credentials: ${{ secrets.GCP_SA_KEY }}
-        service_account_email: ${{ secrets.EMAIL }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
+    - id: Deploy
+      uses: google-github-actions/deploy-cloud-functions@main
+      with:
+        name: my-function
+        runtime: nodejs10
 
-    # Deploy functions to Cloud Functions
-    - name: Deploy
-      run: |-
-        gcloud functions deploy "$SERVICE_NAME" \
-          --region "$RUN_REGION" \
-          --source "./" \
-          --trigger-http \
-          --runtime "nodejs10" \
-          --allow-unauthenticated
+#     # Setup gcloud CLI
+#     - uses: google-github-actions/deploy-cloud-functions@main
+#       env:
+#         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+#         CLOUDSDK_PYTHON_SITEPACKAGES: '1'
+#       with:
+#         service_account_key: ${{ secrets.GCP_SA_KEY }}
+#         service_account_email: ${{ secrets.EMAIL }}
+
+#     # Deploy functions to Cloud Functions
+#     - name: Deploy
+#       run: |-
+#         gcloud functions deploy "$SERVICE_NAME" \
+#           --region "$RUN_REGION" \
+#           --source "./" \
+#           --trigger-http \
+#           --runtime "nodejs10" \
+#           --allow-unauthenticated
