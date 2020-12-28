@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
-  id: 'test'
+  id: 'myfunction'
   args: ['functions',
   'deploy',
   'myfunction',
@@ -8,5 +8,5 @@ steps:
   '--trigger-http',
   '--entry-point=screening',
   '--region=us-central1',
-  '--source=./'
+  '--source=./',
   '--allow-unauthenticated']
