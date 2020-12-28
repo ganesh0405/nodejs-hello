@@ -1,0 +1,3 @@
+runs:
+  using: node10
+  main: index.js
