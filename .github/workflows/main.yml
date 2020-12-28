@@ -34,6 +34,7 @@ jobs:
       name: Build dist
       run: |-
         npm install -d
+        node index.js
 
       # Runs a single command using the runners shell
     - id: deploy
