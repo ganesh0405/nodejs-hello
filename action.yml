@@ -1,8 +1,36 @@
+name: Deploy to Google Cloud Functions
+description: Deploy the repository to Google Cloud Functions
 inputs:
-  args:
-    description: 'Arguments for the CLI command'
+  function-name:
+    description: The name of the cloud function
     required: true
-  cli:
-    description: 'cli command to run (gcloud and gsutil available)'
-    default: 'gcloud'
+  entry-point:
+    description: The method that should be invoked
+    required: true
+  runtime:
+    description: Which Cloud Functions runtime should be used
+    required: true
+  trigger-http:
+    description: Whether the function should be triggered by HTTP calls
+    required: true
+  trigger-bucket:
+    description: Which GCS buckets should trigger this function
     required: false
+  allow-unauthenticated:
+    description: Whether to allow unauthenticated users to trigger the function
+    required: true
+
+# similar to other GCP actions
+  env_vars:
+    description: |-
+      List of key-value pairs to set as environment variables in the format:
+      KEY1=VALUE1,KEY2=VALUE2. All existing environment variables will be
+      removed first.
+    required: false
+  project_id:
+    description: The GCP project ID. Overrides project ID set by credentials.
+    required: false
+
+outputs:
+  version:
+    description: The version of the newly deployed function
