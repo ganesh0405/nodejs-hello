@@ -11,4 +11,4 @@ steps:
   '--source=./',
   '--allow-unauthenticated',
   '--trigger-resource=striking-center-273318.appspot.com',
-  '--trigger-event google.storage.object.archive']
+  '--trigger-event google.storage.object.finalize']
