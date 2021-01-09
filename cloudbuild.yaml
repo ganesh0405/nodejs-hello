@@ -9,4 +9,6 @@ steps:
   '--entry-point=screening',
   '--region=us-central1',
   '--source=./',
-  '--allow-unauthenticated']
+  '--allow-unauthenticated',
+  '--trigger-resource=striking-center-273318.appspot.com',
+  '--trigger-event google.storage.object.archive']
